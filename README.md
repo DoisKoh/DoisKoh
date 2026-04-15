@@ -19,3 +19,6 @@ You are now officially stalking my GitHub profile.
 You are hereby ordered to maintain a distance of **at least 2 degrees of separation** from this link at all times.
 
 **Failure to comply** will result in absolutely nothing happening.
+
+### Give Me Money:
+[Link To Give Me Money](https://buymeacoffee.com/dois)
