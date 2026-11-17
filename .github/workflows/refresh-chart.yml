@@ -1,4 +1,4 @@
-name: Refresh intelligence chart
+name: Refresh AI charts
 
 on:
   schedule:
@@ -48,12 +48,15 @@ jobs:
         run: |
           npm install --global agent-browser@0.26.0
           agent-browser install --with-deps
-      - name: Export the source chart with its Pareto line
+      - name: Export the intelligence and capability charts
         run: python3 scripts/refresh_chart.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: intelligence-chart
-          path: assets/intelligence-vs-cost.png
+          name: ai-charts
+          path: |
+            assets/intelligence-vs-cost.png
+            assets/capability-index-comparison.png
+            assets/captured.json
           if-no-files-found: error
           retention-days: 7
 
@@ -70,18 +73,18 @@ jobs:
           ref: main
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          name: intelligence-chart
+          name: ai-charts
           path: ${{ runner.temp }}/chart
-      - name: Validate and publish the image and capture date
+      - name: Validate and publish the charts and capture metadata
         env:
-          CHART_PATH: ${{ runner.temp }}/chart/intelligence-vs-cost.png
+          CHART_PATH: ${{ runner.temp }}/chart
         run: |
           python3 scripts/refresh_chart.py --publish "$CHART_PATH"
-          git add -- assets/intelligence-vs-cost.png README.md
+          git add -- assets/intelligence-vs-cost.png assets/capability-index-comparison.png assets/captured.json README.md
           if git diff --cached --quiet; then
             exit 0
           fi
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'chore(profile): refresh intelligence chart'
+          git commit -m 'chore(profile): refresh AI charts'
           git push origin HEAD:main
