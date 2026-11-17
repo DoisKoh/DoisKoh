@@ -29,6 +29,8 @@ judge freshness.
 version read from the source page, and both image checksums. Publication validates
 the entire bundle before updating anything. Retrying publication of an old
 artifact retains its actual capture date instead of falsely reporting a new one.
+Publication also skips bundles older than the currently published capture, so an
+old job retry cannot roll the profile back after a newer refresh succeeds.
 
 The capture job has read-only repository permissions and no stored checkout
 credentials. A separate publishing job downloads only the generated chart bundle,

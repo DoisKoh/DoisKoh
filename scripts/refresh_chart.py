@@ -88,6 +88,14 @@ def publish(capture_dir: Path, root: Path = ROOT) -> None:
         if hashlib.sha256(data).hexdigest() != metadata["sha256"][filename]:
             raise ValueError(f"Capture checksum mismatch: {filename}")
         images[filename] = data
+    current_metadata = root / "assets/captured.json"
+    if current_metadata.exists():
+        current_time = datetime.fromisoformat(
+            json.loads(current_metadata.read_bytes())["captured_at"]
+        )
+        if captured_at < current_time:
+            print("Skipped an older capture; newer charts are already published")
+            return
     readme_path = root / "README.md"
     updated_readme = timestamp_readme(
         readme_path.read_text(), captured_at, metadata["index_version"]

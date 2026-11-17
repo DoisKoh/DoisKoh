@@ -14,12 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 README = "before<!-- chart-updated -->old<!-- /chart-updated -->after"
 
 
-def make_bundle(directory: Path) -> None:
+def make_bundle(directory: Path, captured_at: str = "2026-11-16T20:00:00+00:00") -> None:
     directory.mkdir()
     for filename in CHARTS:
         (directory / filename).write_bytes((ROOT / "assets" / filename).read_bytes())
     metadata = {
-        "captured_at": "2026-11-16T20:00:00+00:00",
+        "captured_at": captured_at,
         "index_version": "v5.0.1",
         "sha256": {
             filename: hashlib.sha256((directory / filename).read_bytes()).hexdigest()
@@ -103,6 +103,19 @@ class RefreshChartTests(unittest.TestCase):
                     publish(root / "capture", root)
                 self.assertEqual(image.read_bytes(), b"previous good chart")
                 self.assertEqual((root / "README.md").read_text(), README)
+
+    def test_old_publish_retry_cannot_roll_back_newer_capture(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / "README.md").write_text(README)
+            make_bundle(root / "newer", "2026-11-17T20:00:00+00:00")
+            make_bundle(root / "older", "2026-11-16T20:00:00+00:00")
+            publish(root / "newer", root)
+            published = (root / "assets/captured.json").read_bytes()
+            readme = (root / "README.md").read_text()
+            publish(root / "older", root)
+            self.assertEqual((root / "assets/captured.json").read_bytes(), published)
+            self.assertEqual((root / "README.md").read_text(), readme)
 
     def test_browser_failure_preserves_charts_and_closes_session(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
