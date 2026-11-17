@@ -25,6 +25,10 @@ success or failure. A failed capture leaves both published images and their date
 unchanged; failures appear in Actions. The date above the charts lets visitors
 judge freshness.
 
+The workflow allows up to three attempts, each with a fresh session, for transient
+source-page loading failures. Exhausted attempts fail the job without publishing.
+Timeout logs include font, plotted-model, Pareto-path, and axis readiness details.
+
 `assets/captured.json` records the actual capture time, the Intelligence Index
 version read from the source page, and both image checksums. Publication validates
 the entire bundle before updating anything. Retrying publication of an old

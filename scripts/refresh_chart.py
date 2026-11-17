@@ -141,6 +141,17 @@ def refresh(root: Path = ROOT) -> None:
                 deadline = time.monotonic() + 90
                 while not json.loads(browser("eval", "--stdin", script=ready)):
                     if time.monotonic() >= deadline:
+                        diagnostics = (
+                            "(() => {const chart = document.getElementById("
+                            + json.dumps(chart_id)
+                            + "); return {title: document.title, fonts: document.fonts.status, "
+                            "circles: chart?.querySelectorAll('circle').length, "
+                            "dottedPaths: chart?.querySelectorAll("
+                            "'path[stroke-dasharray]').length, "
+                            "taskCostAxis: chart?.textContent.includes("
+                            "'Cost per Task (USD, Log Scale)')}})()"
+                        )
+                        print(browser("eval", "--stdin", script=diagnostics), flush=True)
                         raise TimeoutError(f"Chart not ready: {chart_id}")
                     time.sleep(0.5)
                 browser(

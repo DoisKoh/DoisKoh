@@ -49,7 +49,14 @@ jobs:
           npm install --global agent-browser@0.26.0
           agent-browser install --with-deps
       - name: Export the intelligence and capability charts
-        run: python3 scripts/refresh_chart.py
+        run: |
+          for attempt in 1 2 3; do
+            if python3 scripts/refresh_chart.py; then
+              exit 0
+            fi
+            echo "Capture attempt $attempt failed; each retry uses a fresh browser session."
+          done
+          exit 1
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: ai-charts
