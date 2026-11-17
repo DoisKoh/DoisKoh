@@ -1,2 +1,7 @@
-# 6 Guys No Cups
-<img width="1254" height="1254" alt="Champagne Spray Garden Party" src="https://github.com/user-attachments/assets/cbeaf5e2-fd5f-4243-9080-b359b2ad5d6e" />
+# Intelligence vs. cost
+
+[![Artificial Analysis Intelligence Index vs. Cost per Task, with the Pareto line showing the intelligence and cost frontier.](assets/intelligence-vs-cost.png)](https://artificialanalysis.ai/#intelligence-index-vs-cost-per-task-chart)
+
+Source: [Artificial Analysis](https://artificialanalysis.ai/#intelligence-index-vs-cost-per-task-chart). Intelligence Index vs. weighted average cost per task (USD, logarithmic scale), including the Pareto line. Models and reasoning settings follow the source chart's default selection.
+
+<!-- chart-updated -->Captured: 2026-11-17 UTC.<!-- /chart-updated --> Refreshed daily. Click the chart to explore the latest results.
