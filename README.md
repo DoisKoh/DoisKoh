@@ -1,4 +1,4 @@
-# AI performance
+# You Have No Chance To Survive Make Your Time
 
 <!-- chart-updated -->Captured: 2026-11-17 UTC. Intelligence Index v5.0.1.<!-- /chart-updated --> Both charts refresh daily. Click either chart to explore the latest results.
 
