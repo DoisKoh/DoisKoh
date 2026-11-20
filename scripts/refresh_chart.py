@@ -67,9 +67,7 @@ def timestamp_readme(readme: str, captured_at: datetime, version: str) -> str:
     if not re.fullmatch(r"v\d+(?:\.\d+){1,2}", version):
         raise ValueError("Missing or invalid Intelligence Index version")
     return STAMP.sub(
-        f"<!-- chart-updated -->Captured: {date} UTC. "
-        f"Intelligence Index {version}.<!-- /chart-updated -->",
-        readme,
+        f"<!-- chart-updated -->\n\n_Captured: {date} UTC_\n\n<!-- /chart-updated -->", readme
     )
 
 
