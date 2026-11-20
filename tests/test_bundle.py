@@ -54,7 +54,8 @@ class RefreshChartTests(unittest.TestCase):
         captured_at = datetime(2026, 11, 18, 1, tzinfo=timezone(timedelta(hours=8)))
         self.assertEqual(
             timestamp_readme(README, captured_at, "v5.0.1"),
-            "before<!-- chart-updated -->_Captured: 2026-11-17 UTC_<!-- /chart-updated -->after",
+            "before<!-- chart-updated -->\n\n_Captured: 2026-11-17 UTC_\n\n"
+            "<!-- /chart-updated -->after",
         )
 
     def test_rejects_missing_or_duplicate_timestamp(self) -> None:

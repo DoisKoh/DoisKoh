@@ -12,4 +12,8 @@ Source: [Artificial Analysis](https://artificialanalysis.ai/#intelligence-index-
 
 Source: [Artificial Analysis](https://artificialanalysis.ai/#capability-index-comparison-chart)
 
-<!-- chart-updated -->_Captured: 2026-11-20 UTC_<!-- /chart-updated -->
+<!-- chart-updated -->
+
+_Captured: 2026-11-20 UTC_
+
+<!-- /chart-updated -->
