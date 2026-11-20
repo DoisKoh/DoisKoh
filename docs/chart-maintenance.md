@@ -22,7 +22,7 @@ button in a fresh browser session. It checks for plotted models, the dotted
 Pareto path, logarithmic task-cost labels, all six capability columns, loaded
 fonts, and complete PNGs of the expected size. The browser session closes on
 success or failure. A failed capture leaves both published images and their date
-unchanged; failures appear in Actions. The date above the charts lets visitors
+unchanged; failures appear in Actions. The date below the charts lets visitors
 judge freshness.
 
 The workflow allows up to three attempts, each with a fresh session, for transient
@@ -39,7 +39,7 @@ old job retry cannot roll the profile back after a newer refresh succeeds.
 The capture job has read-only repository permissions and no stored checkout
 credentials. A separate publishing job downloads only the generated chart bundle,
 validates it again, and commits those images, metadata, and the README's capture
-date and index version. It
+date. The index version remains in `assets/captured.json`. It
 checks out the latest `main` and uses a normal push, so concurrent changes cannot
 be overwritten. Pull request runs verify and capture a preview artifact; they
 never publish.

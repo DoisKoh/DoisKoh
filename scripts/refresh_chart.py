@@ -66,11 +66,7 @@ def timestamp_readme(readme: str, captured_at: datetime, version: str) -> str:
     date = captured_at.astimezone(UTC).strftime("%Y-%m-%d")
     if not re.fullmatch(r"v\d+(?:\.\d+){1,2}", version):
         raise ValueError("Missing or invalid Intelligence Index version")
-    return STAMP.sub(
-        f"<!-- chart-updated -->Captured: {date} UTC. "
-        f"Intelligence Index {version}.<!-- /chart-updated -->",
-        readme,
-    )
+    return STAMP.sub(f"<!-- chart-updated -->_Captured: {date} UTC_<!-- /chart-updated -->", readme)
 
 
 def publish(capture_dir: Path, root: Path = ROOT) -> None:

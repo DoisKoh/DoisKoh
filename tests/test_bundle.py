@@ -54,8 +54,7 @@ class RefreshChartTests(unittest.TestCase):
         captured_at = datetime(2026, 11, 18, 1, tzinfo=timezone(timedelta(hours=8)))
         self.assertEqual(
             timestamp_readme(README, captured_at, "v5.0.1"),
-            "before<!-- chart-updated -->Captured: 2026-11-17 UTC. "
-            "Intelligence Index v5.0.1.<!-- /chart-updated -->after",
+            "before<!-- chart-updated -->_Captured: 2026-11-17 UTC_<!-- /chart-updated -->after",
         )
 
     def test_rejects_missing_or_duplicate_timestamp(self) -> None:
@@ -74,7 +73,7 @@ class RefreshChartTests(unittest.TestCase):
             (root / "README.md").write_text(README)
             make_bundle(root / "capture")
             publish(root / "capture", root)
-            self.assertIn("Captured: 2026-11-16 UTC.", (root / "README.md").read_text())
+            self.assertIn("_Captured: 2026-11-16 UTC_", (root / "README.md").read_text())
             for filename in (*CHARTS, "captured.json"):
                 self.assertEqual(
                     (root / "assets" / filename).read_bytes(),
