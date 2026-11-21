@@ -14,6 +14,6 @@ Source: [Artificial Analysis](https://artificialanalysis.ai/#capability-index-co
 
 <!-- chart-updated -->
 
-_Captured: 2026-11-20 UTC_
+_Captured: 2026-11-21 UTC_
 
 <!-- /chart-updated -->
