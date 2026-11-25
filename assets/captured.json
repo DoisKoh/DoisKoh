@@ -1,8 +1,8 @@
 {
-  "captured_at": "2026-11-23T02:57:25.626816+00:00",
-  "index_version": "v5.0.1",
+  "captured_at": "2026-11-25T05:00:11.735145+00:00",
+  "index_version": "v5.0.2",
   "sha256": {
-    "intelligence-vs-cost.png": "35d3cd08b487f701ec79393f33475b5bc709644d7c7e2de082b7366151c8cde2",
-    "capability-index-comparison.png": "1e2d6843b4aea2f4dbd0d21dcb6a6ea453c10830e1ecd4607e7ae597e237c8b2"
+    "intelligence-vs-cost.png": "f70243bc4c8bb04a48f198567c511a3e2d68cc6fad58b85c8f0f89f3f9ac2084",
+    "capability-index-comparison.png": "ef5cb63931e7e31437791f0ad0c37920ab27ddaaf8226b7ce2976329e68faf57"
   }
 }
